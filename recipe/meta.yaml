@@ -7,9 +7,6 @@ package:
 source:
   url: https://github.com/pothosware/SoapyBladeRF/archive/soapy-bladerf-{{ version }}.tar.gz
   sha256: ca348b30d3a5b84fc5632c97b55db21008af867cad4290641a177576402311b0
-  patches:
-    # upstream fix, remove in next release
-    - 0001-Adding-support-for-PLL-reference-clock.patch
 
 build:
   number: 0
