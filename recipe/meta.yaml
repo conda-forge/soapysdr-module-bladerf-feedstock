@@ -1,4 +1,4 @@
-{% set version = "0.4.2" %}
+{% set version = "0.4.3" %}
 
 package:
   name: soapysdr-module-bladerf
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/pothosware/SoapyBladeRF/archive/soapy-bladerf-{{ version }}.tar.gz
-  sha256: ca348b30d3a5b84fc5632c97b55db21008af867cad4290641a177576402311b0
+  sha256: 05e26ba4172e19953f052812252dafb3ee2cb703ecab1e7c6da811e77cf6edf2
 
 build:
   number: 0
