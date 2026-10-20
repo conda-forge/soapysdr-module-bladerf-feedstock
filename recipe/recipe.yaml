@@ -1,0 +1,56 @@
+schema_version: 1
+
+context:
+  version: "0.4.3"
+
+package:
+  name: soapysdr-module-bladerf
+  version: ${{ version }}
+
+source:
+  url: https://github.com/pothosware/SoapyBladeRF/archive/soapy-bladerf-${{ version }}.tar.gz
+  sha256: 05e26ba4172e19953f052812252dafb3ee2cb703ecab1e7c6da811e77cf6edf2
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - ${{ compiler("cxx") }}
+    - ${{ stdlib("c") }}
+    - cmake
+    - ninja
+    - pkg-config
+  host:
+    - libbladerf
+    - soapysdr
+  run_exports:
+    - ${{ pin_subpackage("soapysdr-module-bladerf", upper_bound="x.x") }}
+
+tests:
+  - package_contents:
+      strict: true
+      files:
+        - if: not win
+          then: lib/SoapySDR/modules${{ soapysdr }}/libbladeRFSupport.so
+          else: Library/lib/SoapySDR/modules${{ soapysdr }}/bladeRFSupport.dll
+  - script:
+      - SoapySDRUtil --info
+      - if: not win
+        then: SoapySDRUtil --info | grep bladeRFSupport
+        else: SoapySDRUtil --info | findstr /l bladeRFSupport
+
+about:
+  license: LGPL-2.1-or-later
+  license_file: LICENSE.LGPLv2.1
+  summary: SoapySDR bladeRF Support Module
+  description: |
+    The Soapy bladeRF project provides a plugin module to use bladeRF radio
+    devices within the SoapySDR API and software that supports SoapySDR.
+  homepage: https://github.com/pothosware/SoapyBladeRF/wiki
+  repository: https://github.com/pothosware/SoapyBladeRF
+  documentation: https://github.com/pothosware/SoapyBladeRF/wiki
+
+extra:
+  recipe-maintainers:
+    - ryanvolz
