@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.4.3"
+  version: "0.4.4"
 
 package:
   name: soapysdr-module-bladerf
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/pothosware/SoapyBladeRF/archive/soapy-bladerf-${{ version }}.tar.gz
-  sha256: 05e26ba4172e19953f052812252dafb3ee2cb703ecab1e7c6da811e77cf6edf2
+  sha256: 0aacd07e34d949f49ff8591939cfd082a4960d260659d80b4c5ff684b5124282
 
 build:
   number: 0
